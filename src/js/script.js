@@ -32,7 +32,7 @@
         linkIncrease: 'a[href="#more"]',
       },
     },
-    // CODE ADDED START
+
     cart: {
       productList: '.cart__order-summary',
       toggleTrigger: '.cart__summary',
@@ -51,7 +51,7 @@
       edit: '[href="#edit"]',
       remove: '[href="#remove"]',
     },
-    // CODE ADDED END
+
   };
 
   const classNames = {
