@@ -221,25 +221,6 @@
         }
       ],
       "id": 1
-    },
-    {
-      "address": "Gamleveien 97",
-      "phone": "46223180",
-      "totalPrice": 29,
-      "subtotalPrice": 9,
-      "totalNumber": 1,
-      "deliveryFee": 20,
-      "products": [
-        {
-          "id": "cake",
-          "amount": 1,
-          "price": 9,
-          "priceSingle": 9,
-          "name": "Zio Stefano's Doughnut",
-          "params": {}
-        }
-      ],
-      "id": 2
     }
   ]
 }
