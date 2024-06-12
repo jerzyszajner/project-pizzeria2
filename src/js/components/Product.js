@@ -157,18 +157,17 @@ class Product {
 
   addToCart() {
     const thisProduct = this;
-  
-    const productDetails = thisProduct.prepareCartProduct();
-  
+ 
+    //  app.cart.add(thisProduct.prepareCartProduct());
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
       detail: {
-        product: productDetails,
+        product: thisProduct.prepareCartProduct(),
       },
-    });
-  
+    }
+    );
     thisProduct.element.dispatchEvent(event);
-  }
+ }
 
   prepareCartProduct() {
     const thisProduct = this;
@@ -199,7 +198,7 @@ class Product {
       params[paramId] = {
         label: param.label,
         options: {}
-      }
+      };
 
       // for every option in this category
       for (let optionId in param.options) {
