@@ -1,4 +1,4 @@
-import { select, classNames, settings, templates } from "../settings.js";
+import { select, classNames, templates, settings } from "../settings.js";
 import AmountWidget from "./AmountWidget.js";
 import utils from "../utils.js";
 
@@ -80,12 +80,7 @@ class Product {
       event.preventDefault();
 
       thisProduct.addToCart();
-
-      thisProduct.form.reset();
-
-      thisProduct.amountWidget.setValue(settings.amountWidget.defaultValue);
-      thisProduct.amountWidget.input.value = thisProduct.amountWidget.value;
-
+      thisProduct.resetForm();
       thisProduct.processOrder();
     });
 
@@ -157,7 +152,7 @@ class Product {
 
   addToCart() {
     const thisProduct = this;
- 
+
     //  app.cart.add(thisProduct.prepareCartProduct());
     const event = new CustomEvent('add-to-cart', {
       bubbles: true,
@@ -167,7 +162,7 @@ class Product {
     }
     );
     thisProduct.element.dispatchEvent(event);
- }
+  }
 
   prepareCartProduct() {
     const thisProduct = this;
@@ -213,6 +208,13 @@ class Product {
     }
 
     return params;
+  }
+
+  resetForm() {
+    const thisProduct = this;
+
+    thisProduct.form.reset();
+    thisProduct.amountWidget.setValue(settings.amountWidget.defaultValue);
   }
 }
 

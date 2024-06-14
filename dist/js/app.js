@@ -105,7 +105,6 @@ const app = {
     }
   },
 
-
   init: function () {
     const thisApp = this;
 
