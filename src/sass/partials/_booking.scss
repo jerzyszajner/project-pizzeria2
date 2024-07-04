@@ -42,7 +42,7 @@
   }
   
   .time-picker {
-    @include flex(row, flex-start, space-between);
+    @include flex(row,flex-start, space-between);
     margin: 0 0 ($base-size * 4) 0;
   }
   
