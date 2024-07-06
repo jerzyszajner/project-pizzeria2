@@ -53,8 +53,12 @@ export const select = {
     address: '[name="address"]',
     starters: '[name="starter"]',
   },
+
   nav: {
     links: '.main-nav a',
+  },
+  home: {
+    linksCta: '.home-cta a',
   },
   cart: {
     productList: '.cart__order-summary',

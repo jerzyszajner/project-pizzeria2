@@ -5,10 +5,9 @@ class Home {
         const thisHome = this;
 
         thisHome.render(element);
-
     }
 
-    render(element){
+    render(element) {
         const thisHome = this;
         const generatedHTML = templates.homeSections();
 

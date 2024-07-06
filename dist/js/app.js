@@ -6,6 +6,23 @@ import Home from './components/Home.js';
 
 const app = {
 
+  initCallToAction: function () {
+    const thisApp = this;
+
+    thisApp.linksCta = document.querySelectorAll(select.home.linksCta);
+
+    for (let link of thisApp.linksCta) {
+      link.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+
+        const id = clickedElement.getAttribute('href').replace('#', '');
+        thisApp.activatePage(id);
+        window.location.hash = '#/' + id;
+      })
+    }
+  },
+
   initPages: function () {
     const thisApp = this;
 
@@ -113,6 +130,8 @@ const app = {
     if (homeContainer) {
       thisApp.home = new Home(homeContainer);
     }
+
+
   },
 
   init: function () {
@@ -123,6 +142,7 @@ const app = {
     thisApp.initCart();
     thisApp.initBooking();
     thisApp.initHome();
+    thisApp.initCallToAction();
   },
 };
 
