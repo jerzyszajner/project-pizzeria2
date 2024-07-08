@@ -1,78 +1,76 @@
+/* home-wrapper */
+.home-wrapper {
+  margin: ($base-size * 3.5) auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
 
- 
- /* home-wrapper */
- .home-wrapper {
-   margin: ($base-size * 3.5) auto;
-   padding: ($base-size * 6) ($base-size * 4);
-   background: $color-light;
-   border-bottom: 1px solid lighten($color-dark, 70%);
-   border-radius: $radius;
- }
+/* call-to-action */
+.home-cta {
+  @include flex(row, normal, normal);
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+}
 
- /* call-to-action */
- .home-cta {
-   @include flex(row, normal, normal);
-   flex-wrap: wrap;
-   width: 100%;
-   height: 100%;
-   gap: 10px;
- }
+.cta-box {
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 calc(50% - 10px);
 
- .cta-box {
-   position: relative;
-   overflow: hidden;
-   flex: 1 1 calc(50% - 10px);
+}
 
- }
+.btn-cta {
+  text-decoration: none;
+  display: flex;
+  position: relative;
+  height: 150px;
+  border-radius: $radius;
+  border: none;
+  background-size: cover;
+  background-position: center;
+  color: $color-light;
 
- .btn-cta {
-   text-decoration: none;
-   display: flex;
-   position: relative;
-   height: 150px;
-   border-radius: $radius;
-   border: none;
-   background-size: cover;
-   background-position: center;
-   color: $color-light;
+  .cta-main-text,
+  .cta-extra-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    transition: $transition;
+  }
 
-   .cta-main-text,
-   .cta-extra-text {
-     position: absolute;
-     width: 100%;
-     text-align: center;
-     transition: $transition;
-   }
+  .cta-main-text {
+    @extend .h1;
+    bottom: 30px;
+  }
 
-   .cta-main-text {
-     @extend .h1;
-     bottom: 30px;
-   }
+  .cta-extra-text {
+    bottom: -25%;
+  }
+}
 
-   .cta-extra-text {
-     bottom: -25%;
-   }
- }
+.order-online-btn {
+  background-image: url('/../images/home/call-to-action/order-online.jpg');
+}
 
- .order-online-btn {
-   background-image: url('/../images/home/call-to-action/order-online.jpg');
- }
+.book-table-btn {
+  background-image: url('/../images/home/call-to-action/book-table.jpg');
+}
 
- .book-table-btn {
-   background-image: url('/../images/home/call-to-action/book-table.jpg');
- }
+.cta-box:hover .cta-main-text {
+  transform: translateY(-60%);
+  color: $color-success;
+}
 
- .cta-box:hover .cta-main-text {
-   transform: translateY(-60%);
-   color: $color-success;
- }
+.cta-box:hover .cta-extra-text {
+  transform: translateY(-300%);
+}
 
- .cta-box:hover .cta-extra-text {
-   transform: translateY(-300%);
- }
-
- /* home-info */
- .info-box {
+/* home-info */
+.info-box {
   @include flex(column, center, normal);
   flex: 0 0 calc(100% - 0px);
   background-color: $color-danger;
@@ -81,6 +79,76 @@
   height: 150px;
 }
 
- h2 {
+h2 {
   @extend .h1;
 }
+
+/* carousel */
+.main-carousel {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.carousel-cell {
+  display: flex;
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.carousel-cell:nth-child(1) .carousel-cell-picture {
+  background-image: url('/../images/home/carousel/pizza-1.jpg');
+}
+
+.carousel-cell:nth-child(2) .carousel-cell-picture {
+  background-image: url('/../images/home/carousel/pizza-2.jpg');
+}
+
+.carousel-cell:nth-child(3) .carousel-cell-picture {
+  background-image: url('/../images/home/carousel/pizza-3.jpg');
+}
+
+.carousel-cell-picture {
+  width: 40%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px 0 0 5px;
+}
+
+.carousel-cell-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 60%;
+  height: 100%;
+  color: $color-dark;
+  border-radius: 0 5px 5px 0;
+  padding: 4%;
+
+
+  h3 {
+    @extend .h2;
+    margin-bottom: auto;
+  }
+}
+
+/* gallery */
+.main-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gallery-cell {
+  width: 100%;
+
+}
+
+.gallery-cell img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+

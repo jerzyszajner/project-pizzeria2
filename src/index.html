@@ -10,6 +10,7 @@
     rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -28,6 +29,7 @@
           <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
+          <a href="#tv">TV</a>
         </div>
 
         <div id="cart" class="cart">
@@ -77,7 +79,18 @@
     <section id="booking">
       <div class="booking-wrapper container"></div>
     </section>
+    <section id="tv">
+      <div class="tv-wrapper container"></div>
+    </section>
   </div>
+
+  <script id="template-tv-section" type="text/x-handlebars-template">
+    <section class="tv-section">
+      <main class="container-video">
+
+    </main>
+  </section>
+  </script>
 
   <script id="template-home-sections" type="text/x-handlebars-template">
     <section class="home-sections">
@@ -98,6 +111,52 @@
           <h2 class="info-title">Opening Hours:</h2>
           <p class="info-details">TUE-SUN, 12PM - 12AM</p>
         </aside>
+      </div>
+      <div class="main-carousel" data-flickity='{ "wrapAround": true}'> <!-- carousel -->
+        <div class="carousel-cell">
+          <div class="carousel-cell-picture"></div>
+          <div class="carousel-cell-text">
+            <h3>Absolutely delightful!</h3>
+            <p>If you’re looking for authentic, delicious pizza, this is the place to go!</p>
+            <small>— John Doe</small>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <div class="carousel-cell-picture"></div>
+          <div class="carousel-cell-text">
+            <h3>Perfect food!</h3>
+            <p>The pizza here never fails to impress me. The crust is perfectly crispy and the toppings are fresh and flavorful.</p>
+            <small>— John Doe</small>
+          </div>
+        </div>
+        <div class="carousel-cell">
+          <div class="carousel-cell-picture"></div>
+          <div class="carousel-cell-text">
+            <h3>Highly recommend!</h3>
+            <p>I had an amazing dining experience at this pizzeria. The service was quick and the atmosphere was cozy.</p>
+            <small>— John Doe</small>
+          </div>
+        </div>
+      </div>
+      <div class="main-gallery">
+        <div class="gallery-cell">
+          <img src="/../images/home/gallery/pizza-1.jpg">  
+        </div>
+        <div class="gallery-cell">
+          <img src="/../images/home/gallery/pizza-2.jpg">  
+        </div>
+        <div class="gallery-cell">
+          <img src="/../images/home/gallery/pizza-3.jpg">  
+        </div>
+        <div class="gallery-cell">
+          <img src="/../images/home/gallery/pizza-4.jpg">  
+        </div>
+        <div class="gallery-cell">
+          <img src="/../images/home/gallery/pizza-5.jpg">  
+        </div>
+        <div class="gallery-cell">
+          <img src="/../images/home/gallery/pizza-6.jpg">  
+        </div>
       </div>
     </section>
   </script>
@@ -280,6 +339,7 @@
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
   <script src="js/app.js" type="module"></script>

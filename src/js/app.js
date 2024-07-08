@@ -3,25 +3,32 @@ import Cart from "./components/Cart.js";
 import Product from "./components/Product.js";
 import Booking from "./components/Booking.js";
 import Home from './components/Home.js';
+import Tv from './components/Tv.js';
 
 const app = {
+
+  handleLinkClick: function (event) {
+    const thisApp = this;
+
+    event.preventDefault();
+    const id = event.currentTarget.getAttribute('href').replace('#', '');
+    thisApp.activatePage(id);
+    window.location.hash = '#/' + id;
+  },
 
   initCallToAction: function () {
     const thisApp = this;
 
-    thisApp.linksCta = document.querySelectorAll(select.home.linksCta);
+    thisApp.ctaLinks = document.querySelectorAll(select.home.links);
 
-    for (let link of thisApp.linksCta) {
+    for (let link of thisApp.ctaLinks) {
       link.addEventListener('click', function (event) {
-        const clickedElement = this;
-        event.preventDefault();
-
-        const id = clickedElement.getAttribute('href').replace('#', '');
-        thisApp.activatePage(id);
-        window.location.hash = '#/' + id;
+        thisApp.handleLinkClick(event);
       })
     }
   },
+
+  
 
   initPages: function () {
     const thisApp = this;
@@ -44,17 +51,15 @@ const app = {
 
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function (event) {
-        const clickedElement = this;
-        event.preventDefault();
-
+        thisApp.handleLinkClick(event);
+        //const clickedElement = this;
+        //event.preventDefault();
         /* get page id from href attribute */
-        const id = clickedElement.getAttribute('href').replace('#', '');
-
+        //const id = clickedElement.getAttribute('href').replace('#', '');
         /* run thisApp.cstivatePage with that id */
-        thisApp.activatePage(id);
-
+        //thisApp.activatePage(id);
         /* change URL hash */
-        window.location.hash = '#/' + id;
+        //window.location.hash = '#/' + id;
       })
     }
   },
@@ -130,8 +135,15 @@ const app = {
     if (homeContainer) {
       thisApp.home = new Home(homeContainer);
     }
+  },
 
+  initTv: function () {
+    const thisApp = this;
 
+    const tvContainer = document.querySelector(select.containerOf.tv);
+    if (tvContainer) {
+      thisApp.tv = new Tv(tvContainer);
+    }
   },
 
   init: function () {
@@ -142,7 +154,9 @@ const app = {
     thisApp.initCart();
     thisApp.initBooking();
     thisApp.initHome();
+    thisApp.initTv();
     thisApp.initCallToAction();
+ 
   },
 };
 
