@@ -4,16 +4,11 @@ import BaseWidget from "./BaseWidget.js";
 class AmountWidget extends BaseWidget {
   constructor(element) {
     super(element, settings.amountWidget.defaultValue);
-
     const thisWidget = this;
-
 
     thisWidget.getElements(element);
     thisWidget.initActions();
-
     thisWidget.setValue(thisWidget.correctValue);
-
-
   }
 
   getElements() {
@@ -34,14 +29,12 @@ class AmountWidget extends BaseWidget {
     const thisWidget = this;
 
     thisWidget.dom.input.value = thisWidget.value;
-
   }
 
   initActions() {
     const thisWidget = this;
 
     thisWidget.dom.input.addEventListener('change', function () {
-      // thisWidget.setValue(thisWidget.dom.input.value);
       thisWidget.value = thisWidget.dom.input.value;
     });
 
@@ -54,6 +47,12 @@ class AmountWidget extends BaseWidget {
       event.preventDefault();
       thisWidget.setValue(thisWidget.value + 1);
     });
+  }
+
+  reset() {
+    const thisWidget = this;
+    
+    thisWidget.setValue(settings.amountWidget.defaultValue);
   }
 }
 

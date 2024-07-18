@@ -1,3 +1,4 @@
+
 import { settings, select, classNames } from './settings.js';
 import Cart from "./components/Cart.js";
 import Product from "./components/Product.js";
@@ -28,8 +29,6 @@ const app = {
     }
   },
 
-  
-
   initPages: function () {
     const thisApp = this;
 
@@ -52,14 +51,6 @@ const app = {
     for (let link of thisApp.navLinks) {
       link.addEventListener('click', function (event) {
         thisApp.handleLinkClick(event);
-        //const clickedElement = this;
-        //event.preventDefault();
-        /* get page id from href attribute */
-        //const id = clickedElement.getAttribute('href').replace('#', '');
-        /* run thisApp.cstivatePage with that id */
-        //thisApp.activatePage(id);
-        /* change URL hash */
-        //window.location.hash = '#/' + id;
       })
     }
   },
@@ -77,6 +68,11 @@ const app = {
         classNames.nav.active,
         link.getAttribute('href') == '#' + pageId
       );
+    }
+
+    // Reinitialize widgets when the home page is activated
+    if (pageId === 'home' && thisApp.home) {
+      thisApp.home.initWidgets();
     }
   },
 
@@ -106,14 +102,23 @@ const app = {
 
     thisApp.data = {};
 
-    const url = settings.db.url + '/' + settings.db.products;
+    const urlHome = settings.db.url + '/' + settings.db.home;
+    const urlProducts = settings.db.url + '/' + settings.db.products;
 
-    fetch(url)
+    fetch(urlHome)
       .then(function (rawResponse) {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
+        thisApp.data.home = parsedResponse;
+        thisApp.initHome();
+      });
 
+    fetch(urlProducts)
+      .then(function (rawResponse) {
+        return rawResponse.json();
+      })
+      .then(function (parsedResponse) {
         thisApp.data.products = parsedResponse;
         thisApp.initMenu();
       });
@@ -133,7 +138,8 @@ const app = {
 
     const homeContainer = document.querySelector(select.containerOf.home);
     if (homeContainer) {
-      thisApp.home = new Home(homeContainer);
+      thisApp.home = new Home(homeContainer, thisApp.data);
+      thisApp.initCallToAction();
     }
   },
 
@@ -153,10 +159,8 @@ const app = {
     thisApp.initData();
     thisApp.initCart();
     thisApp.initBooking();
-    thisApp.initHome();
     thisApp.initTv();
-    thisApp.initCallToAction();
- 
+
   },
 };
 

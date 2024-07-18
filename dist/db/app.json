@@ -1,4 +1,70 @@
 {
+   "home": {
+      "cta": {
+         "sections": [
+            {
+               "id": "order-online",
+               "images": "<img class=\"active\" src=\"images/home/call-to-action/order-online.jpg\">",
+               "name": "Order Online",
+               "extraText": "Welcome",
+               "link": "#order"
+            },
+            {
+               "id": "book-table",
+               "images": "<img class=\"active\" src=\"images/home/call-to-action/book-table.jpg\">",
+               "name": "Book a table",
+               "extraText": "Welcome",
+               "link": "#booking"
+            }
+         ],
+         "info": {
+            "title": "Opening Hours:",
+            "details": "TUE-SUN, 12PM - 12AM"
+         }
+      },
+      "carousel": [
+         {
+            "images": "<img src=\"images/home/carousel/image1.jpg\" alt=\"Absolutely delightful!\">",
+            "title": "Absolutely delightful!",
+            "description": "If you’re looking for authentic, pizza, this is the place to go!",
+            "author": "Sylwia Szajner"
+         },
+         {
+            "images": "<img src=\"images/home/carousel/image2.jpg\" alt=\"Perfect food!\">",
+            "title": "Perfect food!",
+            "description": "The pizza here never fails to impress me. Fresh and flavorful.",
+            "author": "Natalia Szajner"
+         },
+         {
+            "images": "<img src=\"images//home/carousel/image3.jpg\" alt=\"Highly recommend!\">",
+            "title": "Highly recommend!",
+            "description": "I had an amazing dining experience at this pizzeria.",
+            "author": "Jerzy Szajner"
+         }
+      ],
+      "gallery": [
+         "<img src=\"images/home/gallery/pizza-1.jpg\" alt=\"Pizza 1\">",
+         "<img src=\"images/home/gallery/pizza-2.jpg\" alt=\"Pizza 2\">",
+         "<img src=\"images/home/gallery/pizza-3.jpg\" alt=\"Pizza 3\">",
+         "<img src=\"images/home/gallery/pizza-4.jpg\" alt=\"Pizza 4\">",
+         "<img src=\"images/home/gallery/pizza-5.jpg\" alt=\"Pizza 5\">",
+         "<img src=\"images/home/gallery/pizza-6.jpg\" alt=\"Pizza 6\">"
+      ],
+      "footer": [
+         {
+           "content": "About Us"
+         },
+         {
+           "content": "Contact Us"
+         },
+         {
+           "content": "Jobs"
+         },
+         {
+           "content": "Media"
+         }
+       ]
+   },
    "products": [
       {
          "id": "cake",

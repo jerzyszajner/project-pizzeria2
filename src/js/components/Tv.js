@@ -13,13 +13,8 @@ class Tv {
 
         thisTv.dom = {};
         thisTv.dom.wrapper = element;
-
         thisTv.dom.wrapper.innerHTML = generatedHTML;
     }
-      
-
-
-
 }
 
 export default Tv;

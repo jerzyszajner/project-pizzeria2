@@ -13,6 +13,7 @@ export const select = {
     booking: '.booking-wrapper',
     home: '.home-wrapper', // CODE ADDED
     tv: '.tv-wrapper', // CODE ADDED
+    carousel: '.main-carousel', // CODE ADDED
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -42,7 +43,6 @@ export const select = {
       input: 'input[type="range"]',
       output: '.output',
     },
-
   },
   booking: {
     peopleAmount: '.people-amount',
@@ -125,6 +125,7 @@ export const settings = {
   },
   db: {
     url: '//localhost:3131',
+    home: 'home',
     products: 'products',
     orders: 'orders',
     bookings: 'bookings',

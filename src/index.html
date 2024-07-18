@@ -6,12 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
+
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
     rel="stylesheet">
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
   <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -93,72 +95,61 @@
   </script>
 
   <script id="template-home-sections" type="text/x-handlebars-template">
+ 
     <section class="home-sections">
       <div class="home-cta"> <!-- call-to-action -->
-        <article class="cta-box order-online"> <!-- order-online -->
-          <a class="btn-cta order-online-btn" href="#order">
-            <h2 class="cta-main-text">Order Online</h2>
-            <p class="cta-extra-text">Welcome</p>
-          </a>
-        </article>
-        <article class="cta-box book-table"> <!-- book-table -->
-          <a class="btn-cta book-table-btn" href="#booking">
-            <h2 class="cta-main-text">Book a Table</h2>
-            <p class="cta-extra-text">Welcome</p>
-          </a>
-        </article>
-        <aside class="info-box opening-hours"> <!-- home-info -->
-          <h2 class="info-title">Opening Hours:</h2>
-          <p class="info-details">TUE-SUN, 12PM - 12AM</p>
-        </aside>
+        {{#each home.cta.sections}}
+          <article class="cta-box {{id}}">
+            <a class="btn-cta {{id}}-btn" href="{{link}}">
+              {{{images}}}
+              <h2 class="cta-main-text"><span>{{name}}</span></h2>
+              <p class="cta-extra-text">{{extraText}}</p>
+            </a>
+          </article>
+        {{/each}}
+  
+        <div class="info-box opening-hours"> <!-- home-info -->
+          <h2 class="info-title no-spacing">{{home.cta.info.title}}</h2>
+          <p class="info-details no-spacing">{{home.cta.info.details}}</p>
+        </div>
       </div>
-      <div class="main-carousel" data-flickity='{ "wrapAround": true}'> <!-- carousel -->
-        <div class="carousel-cell">
-          <div class="carousel-cell-picture"></div>
-          <div class="carousel-cell-text">
-            <h3>Absolutely delightful!</h3>
-            <p>If you’re looking for authentic, delicious pizza, this is the place to go!</p>
-            <small>— John Doe</small>
+      <div class="main-carousel"> <!-- carousel -->
+        {{#each home.carousel}}
+          <div class="carousel-cell">
+            <div class="carousel-cell-picture">
+              {{{images}}}
+            </div>
+            <div class="carousel-cell-text">
+              <h3>{{title}}</h3>
+              <p>{{description}}</p>
+              <small>— {{author}}</small>
+            </div>
           </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="carousel-cell-picture"></div>
-          <div class="carousel-cell-text">
-            <h3>Perfect food!</h3>
-            <p>The pizza here never fails to impress me. The crust is perfectly crispy and the toppings are fresh and flavorful.</p>
-            <small>— John Doe</small>
-          </div>
-        </div>
-        <div class="carousel-cell">
-          <div class="carousel-cell-picture"></div>
-          <div class="carousel-cell-text">
-            <h3>Highly recommend!</h3>
-            <p>I had an amazing dining experience at this pizzeria. The service was quick and the atmosphere was cozy.</p>
-            <small>— John Doe</small>
-          </div>
-        </div>
+        {{/each}}
       </div>
       <div class="main-gallery">
-        <div class="gallery-cell">
-          <img src="/../images/home/gallery/pizza-1.jpg">  
-        </div>
-        <div class="gallery-cell">
-          <img src="/../images/home/gallery/pizza-2.jpg">  
-        </div>
-        <div class="gallery-cell">
-          <img src="/../images/home/gallery/pizza-3.jpg">  
-        </div>
-        <div class="gallery-cell">
-          <img src="/../images/home/gallery/pizza-4.jpg">  
-        </div>
-        <div class="gallery-cell">
-          <img src="/../images/home/gallery/pizza-5.jpg">  
-        </div>
-        <div class="gallery-cell">
-          <img src="/../images/home/gallery/pizza-6.jpg">  
-        </div>
+        {{#each home.gallery}}
+          <div class="gallery-cell">
+            <div class="icons">
+              <i class="fas fa-heart"></i>
+              <i class="fas fa-link"></i>
+            </div>
+            {{{this}}}
+          </div>
+        {{/each}}
       </div>
+      
+      <div class="main-footer">
+        {{#each home.footer}}
+          <div class="cell-footer">
+            {{content}}
+            
+          </div>
+        {{/each}}
+      </div>
+
     </section>
+
   </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">
@@ -287,13 +278,6 @@
 
         </div>
 
-        <div class="floor-plan">
-          <div class="object entry">entry</div>
-          <div class="object bar">bar</div>
-          <div class="object table" data-table="1">table-1</div>
-          <div class="object table table--round" data-table="2">table-2</div>
-          <div class="object table" data-table="3">table-3</div>
-        </div>
         <div class="booking-options"> <!-- options -->
           <label class="booking-option-title"> <!-- option-row -->
             People
@@ -329,6 +313,13 @@
             </div>
           </div>
         </div>
+        <div class="floor-plan">
+          <div class="object entry">entry</div>
+          <div class="object bar">bar</div>
+          <div class="object table" data-table="1">table-1</div>
+          <div class="object table table--round" data-table="2">table-2</div>
+          <div class="object table" data-table="3">table-3</div>
+        </div>
         <div class="order-confirmation">
           <input type="tel" name="phone" placeholder="Your phone">
           <input type="text" name="address" placeholder="Your address">
@@ -336,12 +327,16 @@
         </div>
       </form>
     </div>
+
   </script>
 
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
   <script src="js/app.js" type="module"></script>
 </body>
 

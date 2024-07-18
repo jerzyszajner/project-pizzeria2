@@ -173,16 +173,13 @@ class Cart {
 
     thisCart.products = [];
     thisCart.dom.productList.innerHTML = '';
-
     thisCart.dom.totalNumber.innerHTML = 0;
     thisCart.dom.subtotalPrice.innerHTML = 0;
     thisCart.dom.totalPrice.forEach((elem) => (elem.innerHTML = 0));
     thisCart.dom.deliveryFee.innerHTML = 0;
-
     thisCart.dom.phone.value = '';
     thisCart.dom.address.value = '';
   }
 }
 
 export default Cart;
-
