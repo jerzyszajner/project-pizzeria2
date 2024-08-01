@@ -46,15 +46,54 @@
     text-decoration: none;
     margin-right: ($base-size * 2);
     text-align: center;
-    padding: $base-size ($base-size * 2);
-    background: darken($color-dark, 5%);
-    border-top-left-radius: $radius;
-    border-top-right-radius: $radius;
+    padding: $base-size (
+      $base-size * 2
+    );
+  background: darken($color-dark, 5%);
+  border-top-left-radius: $radius;
+  border-top-right-radius: $radius;
 
-    &.active {
-      background: lighten($color-dark, 75%);
+  &.active {
+    background: lighten($color-dark, 75%);
+  }
+}
+
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: ($base-size * 2) 0 ($base-size * 8) 0;
+  }
+
+  .logo {
+    display: inline-block;
+    line-height: 1;
+
+    &__title {
+      font-size: ($base-size * 2.5);
+
+      span {
+        font-weight: $font-bold;
+      }
     }
 
+    &__subtitle {
+      font-size: ($base-size * 1.4);
+    }
   }
+
+    .main-nav {
+      position: absolute;
+      @include flex(row, flex-start, flex-start);
+      bottom: ($base-size * -8);
+
+      a {
+        @extend .h2;
+        margin-right: ($base-size * 0.7);
+        padding: $base-size (
+          $base-size * 1.5
+        );
+     }
+   }
 
 }

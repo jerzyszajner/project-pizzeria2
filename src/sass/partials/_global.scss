@@ -3,8 +3,13 @@
 }
 
 body {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Non-prefixed version, currently supported by Chrome, Opera, and Edge */
+  -webkit-user-drag: none;   /* Disable drag for webkit browsers */
   margin: 0;
-  background: lighten($color-dark, 75%);
+  background: lighten($color-dark, 60%);
   font-family: $font-text;
   font-size: 14px;
   line-height: 1.7;

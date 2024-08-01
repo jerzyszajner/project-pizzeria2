@@ -9,6 +9,14 @@
   cursor: pointer;
 }
 
+.btn-audio {
+  @include btn($color-success, $color-light, $color-light);
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+  padding: 0;
+}
+
 .btn-quantity {
   @include btn($color-dark, $color-light, $color-dark);
   vertical-align: top;
@@ -35,12 +43,22 @@ input, select {
   border: 1px solid $color-dark;
   border-radius: $radius;
   padding: $base-size;
+  cursor: pointer;
 
-  // CODE ADDED START
   &.error {
     border-color: $color-main;
   }
-  // CODE ADDED END
+}
+
+input, select, #radioSelect {
+  border: 1px solid $color-dark;
+  border-radius: $radius;
+  padding: ($base-size * 0.5);
+  height: 30px;
+
+  &.error {
+    border-color: $color-main;
+  }
 }
 
 .checkbox {

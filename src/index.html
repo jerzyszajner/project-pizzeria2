@@ -6,19 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pizzeria</title>
-
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
     rel="stylesheet">
-  <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
   <link rel="stylesheet" href="vendor/range-slider.min.css">
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
@@ -26,14 +25,12 @@
           <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
-
         <div class="main-nav">
           <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
           <a href="#tv">TV</a>
         </div>
-
         <div id="cart" class="cart">
           <div class="cart__summary">
             <span class="cart__total-number">0</span>
@@ -70,7 +67,6 @@
       </div>
     </div>
   </header>
-
   <div id="pages">
     <section id="home">
       <div class="home-wrapper container"></div>
@@ -89,13 +85,12 @@
   <script id="template-tv-section" type="text/x-handlebars-template">
     <section class="tv-section">
       <main class="container-video">
-
-    </main>
-  </section>
+        <video id="my-player" class="video-js vjs-default-skin" controls preload="none"></video>
+      </main>
+    </section>
   </script>
 
   <script id="template-home-sections" type="text/x-handlebars-template">
- 
     <section class="home-sections">
       <div class="home-cta"> <!-- call-to-action -->
         {{#each home.cta.sections}}
@@ -103,11 +98,10 @@
             <a class="btn-cta {{id}}-btn" href="{{link}}">
               {{{images}}}
               <h2 class="cta-main-text"><span>{{name}}</span></h2>
-              <p class="cta-extra-text">{{extraText}}</p>
+              <p class="cta-extra-text">{{description}}</p>
             </a>
           </article>
         {{/each}}
-  
         <div class="info-box opening-hours"> <!-- home-info -->
           <h2 class="info-title no-spacing">{{home.cta.info.title}}</h2>
           <p class="info-details no-spacing">{{home.cta.info.details}}</p>
@@ -127,29 +121,34 @@
           </div>
         {{/each}}
       </div>
+      <div class="main-gallery-wrapper">
+        <div class="audio-controls">
+          <select id="radioSelect">
+            <option value="https://22733.live.streamtheworld.com/ANTYRADIOAAC.aac?t=1722191182879">AntyRadio</option>
+            <option value="https://listenssl.ibizaglobalradio.com:8024/ibizaglobalradio.mp3">Ibiza Global Radio</option>
+          </select>
+          <a id="playPauseBtn" class="btn-audio"><i class="fas fa-play"></i></a>
+          <a id="muteBtn" class="btn-audio"><i class="fa fa-volume-up"></i></a>
+          <input type="range" id="volumeSlider" min="0" step="0.5" max="100" value="100">
+          <audio id="myAudio" preload="none">
+            <source src="https://22733.live.streamtheworld.com/ANTYRADIOAAC.aac?t=1722191182879" type="audio/mp3">
+            <source src="https://listenssl.ibizaglobalradio.com:8024/ibizaglobalradio.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+      </div>
+        <h2 class="gallery-title">{{home.gallery.title}}</h2>
       <div class="main-gallery">
-        {{#each home.gallery}}
-          <div class="gallery-cell">
-            <div class="icons">
-              <i class="fas fa-heart"></i>
-              <i class="fas fa-link"></i>
-            </div>
+        {{#each home.gallery.images}}
+          <div class="gallery-cell" data-id="{{@index}}">
             {{{this}}}
+            <button class="like-button" data-id="{{@index}}">
+              ❤ <span class="like-count">0</span>
+            </button>
           </div>
         {{/each}}
       </div>
-      
-      <div class="main-footer">
-        {{#each home.footer}}
-          <div class="cell-footer">
-            {{content}}
-            
-          </div>
-        {{/each}}
-      </div>
-
+    </div>
     </section>
-
   </script>
 
   <script id="template-cart-product" type="text/x-handlebars-template">
@@ -182,7 +181,6 @@
 
   <script id="template-menu-product" type="text/x-handlebars-template">
     <article class="product"> <!-- product -->
-
         <header class="product__header">
           <h3 class="product__name no-spacing">{{ name }} <i class="fas fa-chevron-down product__icon"></i></h3>
           <p class="product__base-price no-spacing">${{ price }}</p>
@@ -255,7 +253,6 @@
             {{/each}}
           </div>
         </div>
-
     </article> <!-- .product -->
   </script>
 
@@ -264,20 +261,16 @@
       <h2 class="page__title no-spacing">Book a table</h2>
       <form class="booking-form">
         <div class="time-picker">
-
           <div class="date-picker">
             <label class="booking-option-title">Pick a date</label>
             <input type="text" name="date">
           </div>
-
           <div class="hour-picker range-slider">
               <div class="output"></div>
               <label class="booking-option-title">Pick a time</label>
             <input type="range" name="hour" value="12" min="12" max="24" step="0.5">
           </div>
-
         </div>
-
         <div class="booking-options"> <!-- options -->
           <label class="booking-option-title"> <!-- option-row -->
             People
@@ -327,16 +320,33 @@
         </div>
       </form>
     </div>
-
   </script>
 
+  <footer id="footer">
+    <ul class="main-footer">
+      <li class="cell-footer">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f icon"></i></a>
+      </li>
+      <li class="cell-footer">
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter icon"></i></a>
+      </li>
+      <li class="cell-footer">
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in icon"></i></a>
+      </li>
+      <li class="cell-footer">
+        <a href="#" aria-label="Google Plus"><i class="fab fa-google-plus-g icon"></i></a>
+      </li>
+      <li class="cell-footer">
+        <p class="logo">{<span>U</span>}nusual</p>
+      </li>
+    </ul>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
+  <script src="https://vjs.zencdn.net/7.17.0/video.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 

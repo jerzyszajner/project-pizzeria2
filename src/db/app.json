@@ -4,16 +4,16 @@
          "sections": [
             {
                "id": "order-online",
-               "images": "<img class=\"active\" src=\"images/home/call-to-action/order-online.jpg\">",
+               "images": "<img src=\"images/home/call-to-action/order.jpg\">",
                "name": "Order Online",
-               "extraText": "Welcome",
+               "description": "Welcome",
                "link": "#order"
             },
             {
                "id": "book-table",
-               "images": "<img class=\"active\" src=\"images/home/call-to-action/book-table.jpg\">",
+               "images": "<img src=\"images/home/call-to-action/booking.jpg\">",
                "name": "Book a table",
-               "extraText": "Welcome",
+               "description": "Welcome",
                "link": "#booking"
             }
          ],
@@ -26,44 +26,33 @@
          {
             "images": "<img src=\"images/home/carousel/image1.jpg\" alt=\"Absolutely delightful!\">",
             "title": "Absolutely delightful!",
-            "description": "If you’re looking for authentic, pizza, this is the place to go!",
-            "author": "Sylwia Szajner"
+            "description": "Consistently delicious and high quality.",
+            "author": "Bill Gates"
          },
          {
             "images": "<img src=\"images/home/carousel/image2.jpg\" alt=\"Perfect food!\">",
             "title": "Perfect food!",
-            "description": "The pizza here never fails to impress me. Fresh and flavorful.",
-            "author": "Natalia Szajner"
+            "description": "Innovative, fresh, and absolutely delightful.",
+            "author": "Sam Altman"
          },
          {
             "images": "<img src=\"images//home/carousel/image3.jpg\" alt=\"Highly recommend!\">",
             "title": "Highly recommend!",
-            "description": "I had an amazing dining experience at this pizzeria.",
-            "author": "Jerzy Szajner"
+            "description": "Fresh, flavorful, and highly shareable.",
+            "author": "Mark Zuckerberg"
          }
       ],
-      "gallery": [
-         "<img src=\"images/home/gallery/pizza-1.jpg\" alt=\"Pizza 1\">",
-         "<img src=\"images/home/gallery/pizza-2.jpg\" alt=\"Pizza 2\">",
-         "<img src=\"images/home/gallery/pizza-3.jpg\" alt=\"Pizza 3\">",
-         "<img src=\"images/home/gallery/pizza-4.jpg\" alt=\"Pizza 4\">",
-         "<img src=\"images/home/gallery/pizza-5.jpg\" alt=\"Pizza 5\">",
-         "<img src=\"images/home/gallery/pizza-6.jpg\" alt=\"Pizza 6\">"
-      ],
-      "footer": [
-         {
-           "content": "About Us"
-         },
-         {
-           "content": "Contact Us"
-         },
-         {
-           "content": "Jobs"
-         },
-         {
-           "content": "Media"
-         }
-       ]
+      "gallery": {
+         "title": "Help Us Pick the Best Dishes for Next Month!",
+         "images": [
+            "<img src=\"images/home/gallery/pizza-1.jpg\" alt=\"Pizza 1\">",
+            "<img src=\"images/home/gallery/pizza-2.jpg\" alt=\"Pizza 2\">",
+            "<img src=\"images/home/gallery/pizza-3.jpg\" alt=\"Pizza 3\">",
+            "<img src=\"images/home/gallery/pizza-4.jpg\" alt=\"Pizza 4\">",
+            "<img src=\"images/home/gallery/pizza-5.jpg\" alt=\"Pizza 5\">",
+            "<img src=\"images/home/gallery/pizza-6.jpg\" alt=\"Pizza 6\">"
+         ]
+      }
    },
    "products": [
       {
@@ -272,7 +261,7 @@
    "events": [
       {
          "id": 1,
-         "date": "2024-06-26",
+         "date": "2024-07-26",
          "hour": "12:30",
          "table": 1,
          "repeat": false,
@@ -282,7 +271,7 @@
       },
       {
          "id": 2,
-         "date": "2024-06-24",
+         "date": "2024-07-24",
          "hour": "16:00",
          "table": 3,
          "repeat": "daily",
@@ -295,7 +284,7 @@
       },
       {
          "id": 3,
-         "date": "2024-06-25",
+         "date": "2024-07-25",
          "hour": "12:00",
          "table": 3,
          "repeat": "daily",
@@ -308,7 +297,7 @@
       },
       {
          "id": 4,
-         "date": "2024-06-27",
+         "date": "2024-07-27",
          "hour": "13:00",
          "table": 2,
          "repeat": "daily",
@@ -318,7 +307,7 @@
       },
       {
          "id": 5,
-         "date": "2024-06-28",
+         "date": "2024-07-28",
          "hour": "18:00",
          "table": 2,
          "repeat": "daily",

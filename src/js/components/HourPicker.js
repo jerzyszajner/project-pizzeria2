@@ -23,7 +23,7 @@ class HourPicker extends BaseWidget {
     thisWidget.dom.input.addEventListener('input', function () {
       if (!thisWidget.isResetting) {
         thisWidget.value = thisWidget.dom.input.value;
-        console.log('inputValue', thisWidget.value);
+        //console.log('inputValue', thisWidget.value);
       }
     });
   }

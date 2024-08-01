@@ -160,3 +160,10 @@
   }
 
 }
+
+@media (max-width: 480px) {
+  .cart {
+    position: relative;
+    width: auto;
+  }
+}

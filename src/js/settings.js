@@ -15,6 +15,9 @@ export const select = {
     tv: '.tv-wrapper', // CODE ADDED
     carousel: '.main-carousel', // CODE ADDED
   },
+  galleryImages: {
+    imageWrapper: '.gallery-cell',
+  },
   all: {
     menuProducts: '#product-list > .product',
     menuProductsActive: '#product-list > .product.active',
@@ -101,6 +104,10 @@ export const classNames = {
   },
   pages: {
     active: 'active',
+  },
+
+  galleryState: {
+    favorite: 'favorite',
   }
 };
 

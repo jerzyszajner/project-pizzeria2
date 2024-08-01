@@ -33,6 +33,8 @@ class DatePicker extends BaseWidget{
         thisWidget.value = dateStr;
       },
     });
+
+    thisWidget.dom.input.value = utils.dateToStr(thisWidget.minDate);
   }
 
   resetDatePicker() {

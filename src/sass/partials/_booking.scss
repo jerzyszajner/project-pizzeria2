@@ -17,7 +17,7 @@
   }
   
   .booking-wrapper {
-    margin: ($base-size * 3.5) auto;
+    margin: ($base-size * 3.5) auto ($base-size * 7);
     padding: ($base-size * 4) ($base-size * 4);
     background: $color-light;
     border-bottom: 1px solid lighten($color-dark, 70%);
@@ -218,5 +218,63 @@
 
   .order-confirmation {
     @include flex(row, center, center);
-    margin: 0 0 ($base-size * 4) 0;
+    margin: 0 0 ($base-size * 0) 0;
+  }
+
+  .order-confirmation .btn-secondary {
+    margin-left: 10px;
+  }
+
+  .order-confirmation input {
+    margin-left: 10px;
+  }
+
+  @media (max-width: 480px) {
+    .booking-wrapper {
+      margin: ($base-size * 0) auto;
+      padding: ($base-size * 1) ($base-size * 1.4);
+    }
+
+    .booking-options {
+      margin: 20px auto;
+    }
+
+    .booking-option-title {
+      @extend .h2;
+      display: block;
+      margin: 0 0 ($base-size * 1) 0;
+    
+      > .widget-amount {
+        margin: ($base-size * 1) 0 0 0;
+      }
+    }
+
+    .page__title {
+      @extend .h1;
+      margin: 0 0 ($base-size * 1) 0;
+    }
+
+    .time-picker {
+      @include flex(row,flex-start, space-between);
+      margin: 0 0 ($base-size * 4) 0;
+    }
+
+    .floor-plan {
+      margin: 20px auto;
+    }
+
+    .order-confirmation {
+      @include flex(column, center, center);
+      margin: 0 0 ($base-size * 4) 0;
+    }
+
+    .order-confirmation input {
+      margin: 10px;
+      width: 250px;
+    }
+
+    .order-confirmation .btn-secondary {
+      margin: 10px;
+      width: 250px;
+    }
   }
