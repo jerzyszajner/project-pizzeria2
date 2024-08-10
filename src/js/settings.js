@@ -3,20 +3,28 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
-    homeSections: '#template-home-sections', // CODE ADDED
-    tvSection: '#template-tv-section', // CODE ADDED
+    homeSections: '#template-home-sections',
+    tvSection: '#template-tv-section',
   },
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
-    home: '.home-wrapper', // CODE ADDED
-    tv: '.tv-wrapper', // CODE ADDED
-    carousel: '.main-carousel', // CODE ADDED
+    home: '.home-wrapper',
+    tv: '.tv-wrapper',
+    carousel: '.main-carousel',
   },
-  galleryImages: {
-    imageWrapper: '.gallery-cell',
+  audioControls: {
+    audio: 'audio',
+    radioSelect: '#radioSelect',
+    playPauseBtn: '#playPauseBtn',
+    muteBtn: '#muteBtn',
+    volumeSlider: '#volumeSlider',
+  },
+  gallery: {
+    likeButton: '.gallery__like-button',
+    likeCount: '.gallery__like-count',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -33,7 +41,7 @@ export const select = {
   },
   widgets: {
     amount: {
-      input: 'input.amount', // CODE CHANGED
+      input: 'input.amount',
       linkDecrease: 'a[href="#less"]',
       linkIncrease: 'a[href="#more"]',
     },
@@ -63,7 +71,7 @@ export const select = {
     links: '.main-nav a',
   },
   home: {
-    links: '.home-cta a',
+    links: '.hero-nav a',
   },
   cart: {
     productList: '.cart__order-summary',
@@ -83,7 +91,6 @@ export const select = {
     edit: '[href="#edit"]',
     remove: '[href="#remove"]',
   },
-
 };
 
 export const classNames = {
@@ -145,8 +152,8 @@ export const settings = {
 };
 
 export const templates = {
-  tvSection: Handlebars.compile(document.querySelector(select.templateOf.tvSection).innerHTML), // CODE ADDED
-  homeSections: Handlebars.compile(document.querySelector(select.templateOf.homeSections).innerHTML), // CODE ADDED
+  tvSection: Handlebars.compile(document.querySelector(select.templateOf.tvSection).innerHTML),
+  homeSections: Handlebars.compile(document.querySelector(select.templateOf.homeSections).innerHTML),
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),

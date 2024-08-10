@@ -15,6 +15,7 @@ class Home {
 
   render(element) {
     const thisHome = this;
+
     const generatedHTML = templates.homeSections(thisHome.data);
 
     thisHome.dom = {};
@@ -41,21 +42,51 @@ class Home {
   initActions() {
     const thisHome = this;
 
-    const likeButtons = thisHome.dom.wrapper.querySelectorAll('.like-button');
+    const likeButtons = thisHome.dom.wrapper.querySelectorAll('.gallery__like-button');
     likeButtons.forEach(button => {
       button.addEventListener('click', (event) => thisHome.toggleLike(event));
     });
+
+    thisHome.dom.wrapper.addEventListener('click', event => {
+      if (event.target.id === 'car') {
+        thisHome.animateCar(event.target);
+      }
+    });
+  }
+
+  animateCar(target) {
+    const thisHome = this;
+
+    // Disable pointer events to prevent interactions during the animation
+    target.style.pointerEvents = 'none';
+
+    // Remove 'animate' class to reset the animation
+    target.classList.remove('animate');
+
+    // Play audio if it's not already defined
+    thisHome.dom.snoopAudio = thisHome.dom.snoopAudio || thisHome.dom.wrapper.querySelector('#snoopAudio');
+    thisHome.dom.snoopAudio.play();
+
+    // Reapply 'animate' class after a short delay to trigger the animation
+    setTimeout(() => {
+      target.classList.add('animate');
+
+      // Re-enable pointer events after animation ends
+      setTimeout(() => {
+        target.style.pointerEvents = 'auto';
+      }, 4900); // Animation duration
+    }, 10);  // Delay before reapplying 'animate' class
   }
 
   initAudioControls() {
     const thisHome = this;
 
     // Selecting elements from the DOM
-    thisHome.dom.audio = thisHome.dom.wrapper.querySelector('audio');
-    thisHome.dom.radioSelect = thisHome.dom.wrapper.querySelector('#radioSelect');
-    thisHome.dom.playPauseBtn = thisHome.dom.wrapper.querySelector('#playPauseBtn');
-    thisHome.dom.muteBtn = thisHome.dom.wrapper.querySelector('#muteBtn');
-    thisHome.dom.volumeSlider = thisHome.dom.wrapper.querySelector('#volumeSlider');
+    thisHome.dom.audio = thisHome.dom.wrapper.querySelector(select.audioControls.audio);
+    thisHome.dom.radioSelect = thisHome.dom.wrapper.querySelector(select.audioControls.radioSelect);
+    thisHome.dom.playPauseBtn = thisHome.dom.wrapper.querySelector(select.audioControls.playPauseBtn);
+    thisHome.dom.muteBtn = thisHome.dom.wrapper.querySelector(select.audioControls.muteBtn);
+    thisHome.dom.volumeSlider = thisHome.dom.wrapper.querySelector(select.audioControls.volumeSlider);
 
     thisHome.dom.audio.volume = 0.25;
     thisHome.dom.volumeSlider.value = 25;
@@ -87,7 +118,7 @@ class Home {
       thisHome.dom.audio.src = selectedSource;
       thisHome.dom.playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
       //thisHome.dom.audio.play();
-     // thisHome.dom.playPauseBtn.textContent = 'Pause';
+      // thisHome.dom.playPauseBtn.textContent = 'Pause';
     });
 
     // Volume control
@@ -116,13 +147,13 @@ class Home {
   }
 
   updateLikeCount(imageId, button) {
-    const likeCount = button.querySelector('.like-count');
+    const likeCount = button.querySelector(select.gallery.likeCount);
     likeCount.textContent = this.favoriteCounts[imageId];
   }
 
   updateLikeCounts() {
     const thisHome = this;
-    const likeButtons = thisHome.dom.wrapper.querySelectorAll('.like-button');
+    const likeButtons = thisHome.dom.wrapper.querySelectorAll(select.gallery.likeButton);
     likeButtons.forEach(button => {
       const imageId = button.getAttribute('data-id');
       if (thisHome.favoriteCounts[imageId]) {

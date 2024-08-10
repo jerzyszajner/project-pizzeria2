@@ -10,19 +10,20 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
     rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link href="https://vjs.zencdn.net/7.17.0/video-js.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
         <div class="logo">
-          <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
+          <h1 class="logo__title"><span>Fake</span>Pizza!</h1>
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
         <div class="main-nav">
@@ -67,6 +68,7 @@
       </div>
     </div>
   </header>
+
   <div id="pages">
     <section id="home">
       <div class="home-wrapper container"></div>
@@ -91,63 +93,82 @@
   </script>
 
   <script id="template-home-sections" type="text/x-handlebars-template">
-    <section class="home-sections">
-      <div class="home-cta"> <!-- call-to-action -->
-        {{#each home.cta.sections}}
-          <article class="cta-box {{id}}">
-            <a class="btn-cta {{id}}-btn" href="{{link}}">
-              {{{images}}}
-              <h2 class="cta-main-text"><span>{{name}}</span></h2>
-              <p class="cta-extra-text">{{description}}</p>
-            </a>
-          </article>
-        {{/each}}
-        <div class="info-box opening-hours"> <!-- home-info -->
-          <h2 class="info-title no-spacing">{{home.cta.info.title}}</h2>
-          <p class="info-details no-spacing">{{home.cta.info.details}}</p>
-        </div>
-      </div>
-      <div class="main-carousel"> <!-- carousel -->
-        {{#each home.carousel}}
-          <div class="carousel-cell">
-            <div class="carousel-cell-picture">
-              {{{images}}}
-            </div>
-            <div class="carousel-cell-text">
-              <h3>{{title}}</h3>
-              <p>{{description}}</p>
-              <small>— {{author}}</small>
-            </div>
+    <section class="hero-nav">
+      {{#each home.hero.cards}}
+        <article class="hero-nav__card">
+          <a href="{{link}}" class="hero-nav__link">
+            <picture class="hero-nav__picture">
+              <source srcset="{{imageWebp}}" type="image/webp">
+              <img src="{{imageWebp}}" alt="{{alt}}" class="hero-nav__image">
+            </picture>
+            <h2 class="hero-nav__title no-spacing">{{title}}</h2>
+            <p class="hero-nav__description no-spacing">{{description}}</p>
+          </a>
+        </article>
+      {{/each}}
+    </section>    
+    
+    <section class="opening-hours">
+      <h2 class="opening-hours__title  no-spacing">{{home.info.title}}</h2>
+      <p class="opening-hours__description no-spacing">{{home.info.description}}</p>
+    </section>
+
+    <section class="main-carousel">
+      {{#each home.carousel}}
+        <div class="main-carousel__cell">
+          <div class="main-carousel__cell-picture">
+            <picture>
+              <source srcset="{{imageWebp}}" type="image/webp">
+              <img src="{{imageWebp}}" alt="{{alt}}">
+            </picture>
           </div>
-        {{/each}}
+          <div class="main-carousel__cell-text">
+            <h3 class="main-carousel__name no-spacing">{{title}}</h3>
+            <p class="main-carousel__info no-spacing">{{description}}</p>
+            <small>— {{author}}</small>
+          </div>
+        </div>
+      {{/each}}
+    </section>
+
+    <section class="audio-controls">
+      <select id="radioSelect">
+        <option value="https://22733.live.streamtheworld.com/ANTYRADIOAAC.aac?t=1722191182879">AntyRadio</option>
+        <option value="https://listenssl.ibizaglobalradio.com:8024/ibizaglobalradio.mp3">Ibiza Global Radio</option>
+      </select>
+      <a id="playPauseBtn" class="btn-audio"><i class="fas fa-play"></i></a>
+      <a id="muteBtn" class="btn-audio"><i class="fa fa-volume-up"></i></a>
+      <input type="range" id="volumeSlider" min="0" step="0.5" max="100" value="100">
+      <audio id="myAudio" preload="none">
+        <source src="https://22733.live.streamtheworld.com/ANTYRADIOAAC.aac?t=1722191182879" type="audio/aac">
+        <source src="https://listenssl.ibizaglobalradio.com:8024/ibizaglobalradio.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+      <div class="audio-controls__animation-container">
+        <img class="audio-controls__animation-image" id="car" src="images/car.svg" alt="Car">
+        <audio id="snoopAudio">
+          <source src="audio/swag.mp3" type="audio/mp3">
+        </audio>
       </div>
-      <div class="main-gallery-wrapper">
-        <div class="audio-controls">
-          <select id="radioSelect">
-            <option value="https://22733.live.streamtheworld.com/ANTYRADIOAAC.aac?t=1722191182879">AntyRadio</option>
-            <option value="https://listenssl.ibizaglobalradio.com:8024/ibizaglobalradio.mp3">Ibiza Global Radio</option>
-          </select>
-          <a id="playPauseBtn" class="btn-audio"><i class="fas fa-play"></i></a>
-          <a id="muteBtn" class="btn-audio"><i class="fa fa-volume-up"></i></a>
-          <input type="range" id="volumeSlider" min="0" step="0.5" max="100" value="100">
-          <audio id="myAudio" preload="none">
-            <source src="https://22733.live.streamtheworld.com/ANTYRADIOAAC.aac?t=1722191182879" type="audio/mp3">
-            <source src="https://listenssl.ibizaglobalradio.com:8024/ibizaglobalradio.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-          </audio>
+    </section>
+
+    <section class="gallery">
+      <div class="gallery__title-container">
+        <h2 class="gallery__title">{{home.gallery.title}}</h2>
       </div>
-        <h2 class="gallery-title">{{home.gallery.title}}</h2>
-      <div class="main-gallery">
+      <div class="gallery__main">
         {{#each home.gallery.images}}
-          <div class="gallery-cell" data-id="{{@index}}">
-            {{{this}}}
-            <button class="like-button" data-id="{{@index}}">
-              ❤ <span class="like-count">0</span>
+          <div class="gallery__cell" data-id="{{@index}}">
+            <picture class="gallery__picture">
+              <source srcset="{{imageWebp}}" type="image/webp">
+              <img src="{{imageWebp}}" alt="{{alt}}" class="gallery__image">
+            </picture>
+            <button class="gallery__like-button" data-id="{{@index}}">
+              ❤ <span class="gallery__like-count">0</span>
             </button>
           </div>
         {{/each}}
       </div>
-    </div>
     </section>
   </script>
 
@@ -182,7 +203,7 @@
   <script id="template-menu-product" type="text/x-handlebars-template">
     <article class="product"> <!-- product -->
         <header class="product__header">
-          <h3 class="product__name no-spacing">{{ name }} <i class="fas fa-chevron-down product__icon"></i></h3>
+          <h3 class="product__name no-spacing">{{ name }}<i class="fas fa-chevron-down product__icon"></i></h3>
           <p class="product__base-price no-spacing">${{ price }}</p>
         </header>
         <div class="product__description"> <!-- description -->
@@ -322,25 +343,25 @@
     </div>
   </script>
 
-  <footer id="footer">
-    <ul class="main-footer">
-      <li class="cell-footer">
-        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f icon"></i></a>
+  <footer class="footer">
+    <ul class="footer__list">
+      <li class="footer__item">
+        <a href="#" class="footer__link" aria-label="Facebook"><i class="footer__icon fab fa-facebook-f"></i></a>
       </li>
-      <li class="cell-footer">
-        <a href="#" aria-label="Twitter"><i class="fab fa-twitter icon"></i></a>
+      <li class="footer__item">
+        <a href="#" class="footer__link" aria-label="Twitter"><i class="footer__icon fab fa-twitter"></i></a>
       </li>
-      <li class="cell-footer">
-        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in icon"></i></a>
+      <li class="footer__item">
+        <a href="#" class="footer__link" aria-label="LinkedIn"><i class="footer__icon fab fa-linkedin-in"></i></a>
       </li>
-      <li class="cell-footer">
-        <a href="#" aria-label="Google Plus"><i class="fab fa-google-plus-g icon"></i></a>
+      <li class="footer__item">
+        <a href="#" class="footer__link" aria-label="Google Plus"><i class="footer__icon fab fa-google-plus-g"></i></a>
       </li>
-      <li class="cell-footer">
-        <p class="logo">{<span>U</span>}nusual</p>
+      <li class="footer__item">
+        <p class="footer__logo">{<span>U</span>}nusual</p>
       </li>
     </ul>
-  </footer>
+  </footer>  
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

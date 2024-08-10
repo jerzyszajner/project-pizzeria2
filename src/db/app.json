@@ -1,42 +1,45 @@
 {
    "home": {
-      "cta": {
-         "sections": [
+      "hero": {
+         "cards": [
             {
-               "id": "order-online",
-               "images": "<img src=\"images/home/call-to-action/order.jpg\">",
-               "name": "Order Online",
-               "description": "Welcome",
+               "imageWebp": "images/home/hero-nav/order.webp",
+               "alt": "Order Online",
+               "title": "Order Online",
+               "description": "Order Now and Enjoy Fast Delivery!",
                "link": "#order"
             },
             {
-               "id": "book-table",
-               "images": "<img src=\"images/home/call-to-action/booking.jpg\">",
-               "name": "Book a table",
-               "description": "Welcome",
+               "imageWebp": "images/home/hero-nav/booking.webp",
+               "alt": "Book a table",
+               "title": "Book a table",
+               "description": "Book Your Table Today and Save Your Spot!",
                "link": "#booking"
             }
-         ],
-         "info": {
-            "title": "Opening Hours:",
-            "details": "TUE-SUN, 12PM - 12AM"
-         }
+         ]
+      },
+      "info": {
+         "title": "Opening Hours:",
+         "description": "TUE-SUN, 12PM - 12AM"
       },
       "carousel": [
          {
-            "images": "<img src=\"images/home/carousel/image1.jpg\" alt=\"Absolutely delightful!\">",
+            "imageWebp": "images/home/carousel/image1.webp",
+            "alt": "Absolutely delightful!",
             "title": "Absolutely delightful!",
             "description": "Consistently delicious and high quality.",
             "author": "Bill Gates"
          },
          {
-            "images": "<img src=\"images/home/carousel/image2.jpg\" alt=\"Perfect food!\">",
+            "imageWebp": "images/home/carousel/image2.webp",
+            "alt": "Perfect food!",
             "title": "Perfect food!",
             "description": "Innovative, fresh, and absolutely delightful.",
             "author": "Sam Altman"
          },
          {
-            "images": "<img src=\"images//home/carousel/image3.jpg\" alt=\"Highly recommend!\">",
+            "imageWebp": "images/home/carousel/image3.webp",
+            "alt": "Highly recommend!",
             "title": "Highly recommend!",
             "description": "Fresh, flavorful, and highly shareable.",
             "author": "Mark Zuckerberg"
@@ -45,12 +48,30 @@
       "gallery": {
          "title": "Help Us Pick the Best Dishes for Next Month!",
          "images": [
-            "<img src=\"images/home/gallery/pizza-1.jpg\" alt=\"Pizza 1\">",
-            "<img src=\"images/home/gallery/pizza-2.jpg\" alt=\"Pizza 2\">",
-            "<img src=\"images/home/gallery/pizza-3.jpg\" alt=\"Pizza 3\">",
-            "<img src=\"images/home/gallery/pizza-4.jpg\" alt=\"Pizza 4\">",
-            "<img src=\"images/home/gallery/pizza-5.jpg\" alt=\"Pizza 5\">",
-            "<img src=\"images/home/gallery/pizza-6.jpg\" alt=\"Pizza 6\">"
+            {
+               "imageWebp": "images/home/gallery/pizza-1.webp",
+               "alt": "Pizza 1"
+            },
+            {
+               "imageWebp": "images/home/gallery/pizza-2.webp",
+               "alt": "Pizza 2"
+            },
+            {
+               "imageWebp": "images/home/gallery/pizza-3.webp",
+               "alt": "Pizza 3"
+            },
+            {
+               "imageWebp": "images/home/gallery/pizza-4.webp",
+               "alt": "Pizza 4"
+            },
+            {
+               "imageWebp": "images/home/gallery/pizza-5.webp",
+               "alt": "Pizza 5"
+            },
+            {
+               "imageWebp": "images/home/gallery/pizza-6.webp",
+               "alt": "Pizza 6"
+            }
          ]
       }
    },

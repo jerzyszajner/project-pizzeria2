@@ -64,21 +64,26 @@ class Tv {
     thisTv.initializePlayer();
   }
 
-  async getNewStreamLink() {
+  async getNewStreamLink(retries = 3) {
     try {
       const response = await fetch('http://localhost:3002/fetch-stream-link');
       if (response.ok) {
         const data = await response.json();
         return data.streamLink;
       } else {
-        console.error('Failed to fetch stream link:', response.statusText);
-        return null;
+        throw new Error(`Failed to fetch stream link: ${response.statusText}`);
       }
     } catch (error) {
-      console.error('Error fetching stream link:', error);
-      return null;
+      if (retries > 0) {
+        console.warn(`Retrying... (${3 - retries + 1})`);
+        return await this.getNewStreamLink(retries - 1);
+      } else {
+        console.error('Error fetching stream link:', error);
+        return null;
+      }
     }
   }
+  
 }
 
 export default Tv;

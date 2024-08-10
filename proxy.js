@@ -5,9 +5,10 @@ import cors from 'cors';
 const app = express();
 const port = 3002;
 
-app.use(cors());
+app.use(cors()); // Enable CORS for cross-origin requests
 
-const fetchStreamLink = async () => {
+// Fetch the stream link with retry logic
+const fetchStreamLink = async (retries = 3) => {
   const url = 'https://www.fashiontv.com/watch/18717158';
   try {
     const response = await fetch(url);
@@ -25,7 +26,6 @@ const fetchStreamLink = async () => {
 
     const jsonData = JSON.parse(jsonMatch[1]);
     //console.log("Extracted JSON data:", jsonData);
-
     const streamURL = jsonData.props.pageProps.video.streamURL;
     if (!streamURL) {
       throw new Error('No stream URL found in JSON');
@@ -33,11 +33,17 @@ const fetchStreamLink = async () => {
 
     return streamURL;
   } catch (error) {
-    console.error('Error fetching stream link:', error);
-    throw error;
+    if (retries > 0) {
+      console.warn(`Retrying... (${3 - retries + 1})`);
+      return await fetchStreamLink(retries - 1);
+    } else {
+      console.error('Error fetching stream link:', error);
+      throw error;
+    }
   }
 };
 
+// API endpoint to get the stream link
 app.get('/fetch-stream-link', async (req, res) => {
   try {
     const streamLink = await fetchStreamLink();
@@ -47,6 +53,7 @@ app.get('/fetch-stream-link', async (req, res) => {
   }
 });
 
+// Start the server
 app.listen(port, () => {
   console.log(`Proxy server listening at http://localhost:${port}`);
 });

@@ -20,9 +20,9 @@ const app = {
   initCallToAction: function () {
     const thisApp = this;
 
-    thisApp.ctaLinks = document.querySelectorAll(select.home.links);
+    thisApp.heroLinks = document.querySelectorAll(select.home.links);
 
-    for (let link of thisApp.ctaLinks) {
+    for (let link of thisApp.heroLinks) {
       link.addEventListener('click', function (event) {
         thisApp.handleLinkClick(event);
       })

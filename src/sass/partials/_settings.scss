@@ -6,6 +6,7 @@ $color-success: #47ce65;
 $color-dark: #333;
 $color-light: #fff;
 $color-main: #ff6b6b;
+$color-sky: #55acee;
 
 $font-header: 'Oswald', sans-serif;
 $font-text: 'Lato', sans-serif;
@@ -15,7 +16,13 @@ $font-normal: 400;
 $font-semibold: 500;
 $font-bold: 700;
 
-$transition: all .3s;
+$text-shadow:
+-1px -1px 0 #000,  
+ 1px -1px 0 #000,
+-1px  1px 0 #000,
+ 1px  1px 0 #000;
+
+$transition: all .3s  ease-in-out;
 $radius: 4px;
 
 $base-size: 12px;
@@ -79,6 +86,10 @@ $base-size: 12px;
 }
 
 /* Helpers */
+
+.center-text {
+  text-align: center;
+}
 
 .no-spacing {
   margin: 0;
