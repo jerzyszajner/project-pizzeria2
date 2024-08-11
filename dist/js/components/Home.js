@@ -73,6 +73,7 @@ class Home {
 
       // Re-enable pointer events after animation ends
       setTimeout(() => {
+        target.classList.remove('animate');
         target.style.pointerEvents = 'auto';
       }, 4900); // Animation duration
     }, 10);  // Delay before reapplying 'animate' class
