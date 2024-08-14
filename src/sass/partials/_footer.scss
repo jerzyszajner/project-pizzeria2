@@ -3,7 +3,7 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: #b3b3b3;
+    background: lighten($color-dark, 65%);
     padding: 8px;
 
     &__list {

@@ -116,7 +116,6 @@
 
   /* Text properties */
   text-align: center;
-  line-height: 3vh;
   color: $color-light;
 
   /* Visual properties */
@@ -126,12 +125,13 @@
   &__title {
     /* Text properties */
     @extend .h1;
+    line-height: 1.2;
   }
 
   &__description {
     /* Text properties */
     font-size: 15px;
-    line-height: 3;
+    line-height: 1.6;
     margin: 0;
   }
 }
@@ -185,7 +185,7 @@
       line-height: 2.5vh;
 
       /* Visual properties */
-      background: rgba($color-dark, 0.1);
+      background: lighten($color-dark, 72%);
     }
 
     &__name {
@@ -207,7 +207,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: lighten($color-dark, 70%);
+  background: lighten($color-dark, 72%);
   border-radius: $radius;
 
   #volumeSlider {
