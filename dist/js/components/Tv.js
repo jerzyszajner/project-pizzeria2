@@ -1,13 +1,15 @@
-import { templates } from "../settings.js";
+import { select, templates } from "../settings.js";
 
 class Tv {
   constructor(element) {
     const thisTv = this;
+
     thisTv.render(element);
   }
 
   async render(element) {
     const thisTv = this;
+
     thisTv.dom = {};
     thisTv.dom.wrapper = element;
     thisTv.dom.wrapper.innerHTML = templates.tvSection();
@@ -18,10 +20,11 @@ class Tv {
 
   initializePlayer() {
     const thisTv = this;
+
     thisTv.streamLink = null;
 
     // Initialize video.js player
-    thisTv.player = videojs('my-player');
+    thisTv.player = videojs(select.tv.playerVideo);
 
     // Add event listener for the play button
     thisTv.addPlayButtonListener();
@@ -34,7 +37,8 @@ class Tv {
 
   addPlayButtonListener() {
     const thisTv = this;
-    thisTv.bigPlayButton = document.querySelector('.vjs-big-play-button');
+
+    thisTv.bigPlayButton = document.querySelector(select.tv.bigPlayButton);
     thisTv.bigPlayButtonListener = async () => {
       if (!thisTv.player.currentSrc() && !thisTv.streamLink) {
         thisTv.streamLink = await thisTv.getNewStreamLink();
@@ -57,10 +61,11 @@ class Tv {
 
   disposePlayer() {
     const thisTv = this;
+
     if (thisTv.player) {
       thisTv.player.dispose();
     }
-    thisTv.dom.wrapper.querySelector('.container-video').innerHTML = '<video id="my-player" class="video-js vjs-default-skin" controls preload="none"></video>';
+    thisTv.dom.wrapper.querySelector(select.tv.containerVideo).innerHTML = '<video id="my-player" class="video-js vjs-default-skin" controls preload="none"></video>';
     thisTv.initializePlayer();
   }
 
@@ -83,7 +88,7 @@ class Tv {
       }
     }
   }
-  
+
 }
 
 export default Tv;

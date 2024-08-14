@@ -67,7 +67,11 @@ export const select = {
     address: '[name="address"]',
     starters: '[name="starter"]',
   },
-
+  tv: {
+    containerVideo: '.container-video',
+    playerVideo: '#my-player',
+    bigPlayButton: '.vjs-big-play-button',
+  },
   nav: {
     links: '.main-nav a',
   },
