@@ -21,10 +21,11 @@ export const select = {
     playPauseBtn: '#playPauseBtn',
     muteBtn: '#muteBtn',
     volumeSlider: '#volumeSlider',
+    snoopAudio: '#snoopAudio',
   },
   gallery: {
     likeButton: '.gallery__like-button',
-    likeCount: '.gallery__like-count',
+    likeDisplay: '.gallery__like-display',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -112,9 +113,11 @@ export const classNames = {
   pages: {
     active: 'active',
   },
-
-  galleryState: {
-    favorite: 'favorite',
+  audioControls: {
+    animate: 'animate',
+  },
+  gallery: {
+    liked: 'liked',
   }
 };
 

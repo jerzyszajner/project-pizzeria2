@@ -1,15 +1,16 @@
-import { templates, select } from "../settings.js";
+import { templates, select, classNames } from "../settings.js";
 import Carousel from "./Carousel.js";
 
 class Home {
   constructor(element, data) {
     const thisHome = this;
+
     thisHome.data = data;
-    thisHome.favoriteCounts = JSON.parse(localStorage.getItem('favoriteCounts')) || {};
+    thisHome.likeStorage = JSON.parse(localStorage.getItem('likeStorage')) || {};
     thisHome.render(element);
     thisHome.initWidgets();
     thisHome.initActions();
-    thisHome.updateLikeCounts();
+    thisHome.updateAllLikeDisplays();
     thisHome.initAudioControls();
   }
 
@@ -42,7 +43,7 @@ class Home {
   initActions() {
     const thisHome = this;
 
-    const likeButtons = thisHome.dom.wrapper.querySelectorAll('.gallery__like-button');
+    const likeButtons = thisHome.dom.wrapper.querySelectorAll(select.gallery.likeButton);
     likeButtons.forEach(button => {
       button.addEventListener('click', (event) => thisHome.toggleLike(event));
     });
@@ -61,19 +62,19 @@ class Home {
     target.style.pointerEvents = 'none';
 
     // Remove 'animate' class to reset the animation
-    target.classList.remove('animate');
+    target.classList.remove(classNames.audioControls.animate);
 
     // Play audio if it's not already defined
-    thisHome.dom.snoopAudio = thisHome.dom.snoopAudio || thisHome.dom.wrapper.querySelector('#snoopAudio');
+    thisHome.dom.snoopAudio = thisHome.dom.snoopAudio || thisHome.dom.wrapper.querySelector(select.audioControls.snoopAudio);
     thisHome.dom.snoopAudio.play();
 
     // Reapply 'animate' class after a short delay to trigger the animation
     setTimeout(() => {
-      target.classList.add('animate');
+      target.classList.add(classNames.audioControls.animate);
 
       // Re-enable pointer events after animation ends
       setTimeout(() => {
-        target.classList.remove('animate');
+        target.classList.remove(classNames.audioControls.animate);
         target.style.pointerEvents = 'auto';
       }, 4900); // Animation duration
     }, 10);  // Delay before reapplying 'animate' class
@@ -130,35 +131,38 @@ class Home {
 
   toggleLike(event) {
     const thisHome = this;
+
     const clickedButton = event.currentTarget;
     const imageId = clickedButton.getAttribute('data-id');
 
-    if (!thisHome.favoriteCounts[imageId]) {
-      thisHome.favoriteCounts[imageId] = 0;
+    if (!thisHome.likeStorage[imageId]) {
+      thisHome.likeStorage[imageId] = 0;
     }
 
-    thisHome.favoriteCounts[imageId] += 1;
-    thisHome.updateLikeCount(imageId, clickedButton);
-    localStorage.setItem('favoriteCounts', JSON.stringify(thisHome.favoriteCounts));
+    thisHome.likeStorage[imageId] += 1;
+    thisHome.updateLikeDisplay(imageId, clickedButton);
+    localStorage.setItem('likeStorage', JSON.stringify(thisHome.likeStorage));
 
-    clickedButton.classList.add('liked');
+    clickedButton.classList.add(classNames.gallery.liked);
     setTimeout(() => {
-      clickedButton.classList.remove('liked');
+      clickedButton.classList.remove(classNames.gallery.liked);
     }, 300);
   }
 
-  updateLikeCount(imageId, button) {
-    const likeCount = button.querySelector(select.gallery.likeCount);
-    likeCount.textContent = this.favoriteCounts[imageId];
+  updateLikeDisplay(imageId, button) {
+    const thisHome = this;
+
+    const likeDisplay = button.querySelector(select.gallery.likeDisplay);
+    likeDisplay.textContent = thisHome.likeStorage[imageId];
   }
 
-  updateLikeCounts() {
+  updateAllLikeDisplays() {
     const thisHome = this;
     const likeButtons = thisHome.dom.wrapper.querySelectorAll(select.gallery.likeButton);
     likeButtons.forEach(button => {
       const imageId = button.getAttribute('data-id');
-      if (thisHome.favoriteCounts[imageId]) {
-        thisHome.updateLikeCount(imageId, button);
+      if (thisHome.likeStorage[imageId]) {
+        thisHome.updateLikeDisplay(imageId, button);
       }
     });
   }
