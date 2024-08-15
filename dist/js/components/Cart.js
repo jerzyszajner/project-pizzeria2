@@ -2,7 +2,7 @@ import { select, settings, classNames, templates } from "../settings.js";
 import utils from "../utils.js";
 import { validatePhone, validateAddress } from "../validation.js";
 import CartProduct from "./CartProduct.js";
-import Alert from "./alert.js";
+import Alert from "./Alert.js";
 
 class Cart {
   constructor(element) {

@@ -1,7 +1,7 @@
 import { classNames, select, settings, templates } from "../settings.js";
 import { validatePhone, validateAddress } from "../validation.js";
 import utils from "../utils.js";
-import Alert from "./alert.js";
+import Alert from "./Alert.js";
 import AmountWidget from "./AmountWidget.js";
 import DatePicker from "./DatePicker.js";
 import HourPicker from "./HourPicker.js";

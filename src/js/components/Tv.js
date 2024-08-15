@@ -70,8 +70,12 @@ class Tv {
   }
 
   async getNewStreamLink(retries = 3) {
+    const baseURL = window.location.hostname.includes('repl.co')
+      ? `https://${window.location.hostname}`
+      : 'http://localhost:3002';
+
     try {
-      const response = await fetch('http://localhost:3002/fetch-stream-link');
+      const response = await fetch(`${baseURL}/fetch-stream-link`);
       if (response.ok) {
         const data = await response.json();
         return data.streamLink;
@@ -88,7 +92,6 @@ class Tv {
       }
     }
   }
-
 }
 
 export default Tv;
